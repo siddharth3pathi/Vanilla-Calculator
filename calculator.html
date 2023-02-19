@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer>
+      function calculation(v) {
+        let para = document.createElement("p");
+        para.className = "history-para";
+        let data = v + "=" + eval(v);
+        para.innerText = data;
+        document.getElementById("history").appendChild(para);
+        return eval(v);
+      }
+
+      function clrhis() {
+        const elements = document.getElementsByClassName("history-para");
+        while (elements.length > 0) elements[0].remove();
+      }
+
+      function clrRecent(){
+        const elements=document.getElementsByClassName("history-para");
+        elements[elements.length-1].remove();
+      }
+    </script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="container-calc">
+        <div class="big-box">
+          <form
+            action=""
+            class="calculator"
+            name="calc"
+            onsubmit="return false;"
+          >
+            <input type="text" name="txt" class="inputArea" />
+            <button onclick="document.calc.txt.value+='7';">7</button>
+            <button onclick="document.calc.txt.value+='8';">8</button>
+            <button onclick="document.calc.txt.value+='9';">9</button>
+            <button
+              onclick="document.calc.txt.value=((document.calc.txt.value).slice(0,(document.calc.txt.value).length-1));"
+            >
+              Delete
+            </button>
+            <button onclick="document.calc.txt.value+='4';">4</button>
+            <button onclick="document.calc.txt.value+='5';">5</button>
+            <button onclick="document.calc.txt.value+='6';">6</button>
+            <button onclick="document.calc.txt.value+='+';">+</button>
+            <button onclick="document.calc.txt.value+='1';">1</button>
+            <button onclick="document.calc.txt.value+='2';">2</button>
+            <button onclick="document.calc.txt.value+='3';">3</button>
+            <button onclick="document.calc.txt.value+='-';">-</button>
+            <button onclick="document.calc.txt.value+='.';">.</button>
+            <button onclick="document.calc.txt.value+='0';">0</button>
+            <button onclick="document.calc.txt.value+='/';">/</button>
+            <button onclick="document.calc.txt.value+='*';">*</button>
+            <button onclick="document.calc.txt.value+='(';">(</button>
+            <button onclick="document.calc.txt.value+=')';">)</button>
+            <button
+              onclick="document.calc.txt.value=calculation(document.calc.txt.value);"
+              class="big-button"
+            >
+              =
+            </button>
+            <button
+              onclick="document.calc.txt.value=(document.calc.txt.value)**2;"
+            >
+              x<sup>2</sup>
+            </button>
+            <button
+              onclick="document.calc.txt.value=(document.calc.txt.value)**3;"
+            >
+              x<sup>3</sup>
+            </button>
+            <button onclick="document.calc.txt.value='';" class="big-button">
+              Clear
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="container-history">
+        <div id="history">
+          <h1>History</h1>
+          <p></p>
+          <button onclick="clrhis()" class="clr-his">Clear All</button>
+          <button class="clr-recent" onclick="clrRecent()">Clear Recent</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
