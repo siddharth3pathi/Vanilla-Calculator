@@ -18,6 +18,7 @@
     position: relative;
 }
 
+
 .container-history p:nth-child(even){
     font-size: 20px;
     padding-left: 10px;
